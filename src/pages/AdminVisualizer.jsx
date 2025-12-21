@@ -24,13 +24,13 @@ export default function AdminVisualizer() {
           ancho_mm,
           url_fotografia,
           
-          color ( nombre ),                 // Join con Color
-          resultado_ftir_raman ( nombre ),  // Join con Resultado Químico
+          color ( nombre ),                
+          resultado_ftir_raman ( nombre ),  
           
-          muestreo (                        // Join con Muestreo
+          muestreo (                        
             fecha_muestreo,
             epoca_climatica,
-            ubicacion (                     // Join Anidado: Muestreo -> Ubicación
+            ubicacion (                     
               nombre_sitio,
               latitud,
               longitud
