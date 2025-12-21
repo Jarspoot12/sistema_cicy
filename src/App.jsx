@@ -1,3 +1,4 @@
+import AdminVisualizer from './pages/AdminVisualizer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -8,7 +9,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import DataEntry from './pages/DataEntry';
-import AdminVisualizer from './pages/AdminVisualizer';
+//import AdminVisualizer from './pages/AdminVisualizer';
 import AdminDashboard from './pages/AdminDashboard';
 import EmailVerified from './pages/EmailVerified';
 // Componente simple de Navegación (Temporal, para probar)
@@ -27,7 +28,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/update-password" element={<UpdatePassword />} />
           <Route path="/email-verified" element={<EmailVerified />} />
-
+          {/* 👇 AGREGA ESTA LÍNEA AQUÍ PARA PROBAR HOY 👇 */}
+          <Route path="/test-visualizador" element={<AdminVisualizer />} />
           {/* --- RUTAS PRIVADAS --- */}
           
           {/* 1. Captura de Datos: Acceso para ADMIN y GENERAL */}
