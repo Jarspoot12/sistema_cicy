@@ -25,7 +25,7 @@ export const TABLE_CONFIG = {
         relationTable: 'institucion_procedencia', // Tabla a buscar
         displayField: 'nombre' // Campo a mostrar en el select
       },
-      { key: 'fecha_registro', label: 'FECHA REGISTRO', type: 'datetime-local', readOnly: true }
+      { key: 'fecha_registro', label: 'FECHA REGISTRO', type: 'date', readOnly: true }
     ]
   },
 
@@ -34,7 +34,7 @@ export const TABLE_CONFIG = {
     roles: ['admin', 'general'],
     columns: [
       { key: 'id', label: 'ID', type: 'number', readOnly: true },
-      { key: 'fecha_muestreo', label: 'FECHA MUESTREO', type: 'datetime-local' },
+      { key: 'fecha_muestreo', label: 'FECHA MUESTREO', type: 'date' },
       { 
         key: 'epoca_climatica', 
         label: 'ÉPOCA CLIMÁTICA', 
@@ -77,6 +77,7 @@ export const TABLE_CONFIG = {
     roles: ['admin', 'general'],
     columns: [
       { key: 'id', label: 'ID', type: 'number', readOnly: true },
+      { key: 'fecha_analisis', label: 'FECHA ANÁLISIS', type: 'date' },
       { key: 'id_particula', label: 'ID PARTÍCULA', type: 'number' },
       { key: 'largo_mm', label: 'LARGO (mm)', type: 'number', step: '0.001' },
       { key: 'ancho_mm', label: 'ANCHO (mm)', type: 'number', step: '0.001' },
@@ -109,7 +110,7 @@ export const TABLE_CONFIG = {
       { key: 'observaciones', label: 'OBSERVACIONES', type: 'textarea' },
 
       // RELACIONES
-      { key: 'id_muestreo', label: 'ID MUESTREO (Ficha)', type: 'number' }, // Este quizás convenga dejarlo numérico o buscar por código
+      { key: 'id_muestreo', label: 'ID MUESTREO (Ficha)', type: 'relation', relationTable: 'muestreo', displayField: 'id' }, // Este quizás convenga dejarlo numérico o buscar por código
       { key: 'id_color', label: 'COLOR', type: 'relation', relationTable: 'color', displayField: 'nombre' },
       { key: 'id_ftir_raman', label: 'RESULTADO FTIR/RAMAN', type: 'relation', relationTable: 'resultado_ftir_raman', displayField: 'nombre' },
       { key: 'id_institucion_analisis', label: 'INST. ANÁLISIS', type: 'relation', relationTable: 'institucion_analisis', displayField: 'nombre' }
@@ -120,15 +121,25 @@ export const TABLE_CONFIG = {
   // CATÁLOGOS (SOLO ADMIN)
   // ======================================================
   
-  ubicacion: {
-    label: "Catálogo: Ubicaciones",
-    roles: ['admin'],
-    columns: [
-      { key: 'id', label: 'ID', type: 'number', readOnly: true },
-      { key: 'nombre_sitio', label: 'NOMBRE SITIO', type: 'text' },
-      { key: 'codigo_sitio', label: 'CÓDIGO SITIO', type: 'text' },
-      { key: 'latitud', label: 'LATITUD', type: 'text' },
-      { key: 'longitud', label: 'LONGITUD', type: 'text' },
+ubicacion: {
+  label: "Catálogo: Ubicaciones",
+  roles: ['admin'],
+  columns: [
+    { key: 'id', label: 'ID', type: 'number', readOnly: true },
+    { key: 'nombre_sitio', label: 'NOMBRE SITIO', type: 'text' },
+    { key: 'codigo_sitio', label: 'CÓDIGO SITIO', type: 'text' },    
+    { 
+      key: 'latitud', 
+      label: 'LATITUD', 
+      type: 'number', 
+      step: '0.000001' // Permite alta precisión GPS
+    },
+    { 
+      key: 'longitud', 
+      label: 'LONGITUD', 
+      type: 'number', 
+      step: '0.000001' 
+    },
       { key: 'pais', label: 'PAÍS', type: 'text' },
       { key: 'estado', label: 'ESTADO', type: 'text' },
       { key: 'municipio', label: 'MUNICIPIO', type: 'text' },

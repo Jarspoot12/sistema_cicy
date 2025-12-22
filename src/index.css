@@ -309,3 +309,300 @@ button:disabled {
     gap: 0.8rem;
   }
 }
+/* --- GESTIÓN DE DATOS: ESTILOS MODERNOS (CORREGIDO) --- */
+
+/* 1. Contenedores */
+.wide-container {
+  width: 95%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.selector-card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selector-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modern-select-large {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.modern-select-large:focus {
+  border-color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.1);
+}
+
+/* 2. Action Bar y Botón Nuevo */
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #e2e8f0;
+  border-bottom: none;
+}
+
+.action-bar h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* VERSIÓN COMPACTA UNIFICADA */
+.btn-modern-new {
+  /* Estética (Colores y formas) */
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(15, 76, 129, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  /* Estructura (Tamaño y Layout) */
+  height: 2.3rem;          /* Altura fija que pediste */
+  padding: 6 16px;         /* Relleno a los lados */
+  font-size: .85rem;         /* Tamaño de letra */
+  
+  /* Alineación (Flexbox) - AQUÍ ESTÁ LA MAGIA */
+  display: flex;
+  align-items: center;     /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+  gap: 8px;                /* Espacio entre icono y texto */
+  white-space: nowrap;     /* ¡PROHIBIDO ROMPER EL RENGLÓN! */
+  font-weight: 400; /* Antes 500. Lo bajamos a Normal para que se vea fino */
+  -webkit-font-smoothing: antialiased; /* Truco para que la letra se vea nítida y delgada */
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.3px; /* Un poquitín de aire para elegancia */
+}
+
+.btn-modern-new:hover {
+  background-color: #0d3b66;
+  transform: translateY(-1px);
+}
+
+/* 3. Formulario Moderno */
+.modern-form-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid #f1f5f9;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.form-header h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-group-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group-modern label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.modern-input {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background-color: #fff;
+  outline: none;
+}
+
+.modern-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.1);
+}
+
+.modern-input:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.full-width { grid-column: 1 / -1; }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-cancel {
+  background-color: white;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #f1f5f9;
+  color: #333;
+}
+
+.btn-save {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 0.6rem rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(15, 76, 129, 0.2);
+}
+
+.btn-save:hover {
+  background-color: #0d3b66;
+  transform: translateY(-2px);
+}
+
+/* Botón Excel */
+.btn-excel {
+  background-color: #107c41; /* El verde oficial de Excel */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(16, 124, 65, 0.2);
+  height: 2.3rem;
+}
+
+.btn-excel:hover {
+  background-color: #0c5e31; /* Un verde más oscuro al pasar el mouse */
+  transform: translateY(-1px);
+}
+
+/* --- GRUPO DE BOTONES DE ACCIÓN --- */
+.action-buttons-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* RESPONSIVE: En pantallas pequeñas (Móvil) */
+@media (max-width: 600px) {
+  .action-buttons-group {
+    flex-direction: column; /* Cambia a columna: uno encima de otro */
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    margin-top: 1rem;       /* Sepáralo un poco del título */
+  }
+
+  /* Hacemos que los botones ocupen todo el ancho para ser fáciles de tocar */
+  .action-buttons-group .btn-excel,
+  .action-buttons-group .btn-modern-new {
+    width: 100% !important; /* Fuerza ancho completo */
+    justify-content: center;
+    height: 3rem;           /* Un poco más altos para dedos gordos */
+  }
+
+  /* Ajuste para el Action Bar en móvil */
+  .action-bar {
+    flex-direction: column; /* Título arriba, botones abajo */
+    align-items: flex-start;
+    padding: 1.2rem;
+    height: auto;
+  }
+}
+
+/* --- CORRECCIÓN RESPONSIVE PARA EL FORMULARIO --- */
+
+@media (max-width: 640px) {
+  
+  /* 1. Reducir el relleno de la tarjeta blanca para ganar espacio */
+  .modern-form-card {
+    padding: 1.5rem; /* Antes era 2.5rem (muy grande para móvil) */
+    width: 100%;
+  }
+
+  /* 2. Forzar que los inputs ocupen el 100% y no tengan ancho mínimo fijo */
+  .form-grid {
+    /* En móvil, queremos 1 sola columna que ocupe todo el ancho disponible */
+    grid-template-columns: 1fr; 
+    gap: 1rem;
+  }
+
+  /* 3. Asegurar que los inputs no se salgan de su caja */
+  .modern-input {
+    width: 100%;       /* Ocupar todo el ancho del padre */
+    min-width: 0;      /* Importante: permite al input encogerse si es necesario */
+    box-sizing: border-box; /* El padding no suma al ancho total */
+  }
+  
+  /* 4. Ajustar el header del formulario */
+  .form-header h3 {
+    font-size: 1.25rem; /* Título un poco más pequeño */
+  }
+}
