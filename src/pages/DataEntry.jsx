@@ -242,7 +242,7 @@ const DataEntry = () => {
                           step={col.step} 
                           required={!col.readOnly}
                           disabled={col.readOnly}
-                          value={currentItem[col.key] || ''}
+                          value={currentItem[col.key] ?? ''}
                           onChange={(e) => handleInputChange(e, col.key, col.type)}
                           className="modern-input"
                           placeholder={col.readOnly ? '(Automático)' : ''}
