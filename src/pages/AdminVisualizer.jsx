@@ -99,7 +99,7 @@ export default function AdminVisualizer() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>🔬 Visualizador de Datos Maestros</h1>
+      <h1>Visualizador de Datos Maestros</h1>
       <p style={{color:'#666', marginBottom:'20px'}}>Unión de tablas: Muestreos + Ubicaciones + Análisis de Laboratorio</p>
       
       {/* -------BARRA DE FILTROS------- */}
