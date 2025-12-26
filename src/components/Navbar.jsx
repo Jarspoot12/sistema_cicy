@@ -27,7 +27,7 @@ const Navbar = () => {
   const getPageTitle = () => {
     switch(location.pathname) {
       case '/captura-datos': return 'Captura de Datos';
-      case '/visualizador': return 'Visualizador (Joins)';
+      case '/visualizador': return 'Visualizador';
       case '/dashboard-admin': return 'Dashboard KPIs';
       default: return 'Menú';
     }
