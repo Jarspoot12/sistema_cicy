@@ -158,15 +158,49 @@ const AdminDashboard = () => {
 
   return (
     <div className="wide-container">
-      <div className="selector-card" style={{minWidth: '100%'}}> {/* Forzamos ancho completo */}
-        <h2 style={{margin:0, color:'#0f172a'}}>Dashboard Analítico</h2>
+      <div className="selector-card" style={{ maxWidth: '100%' }}>
+        <h2 style={{ margin: 0, color: '#0f172a' }}>Dashboard Analítico</h2>
         
-        {/* FILTRO GLOBAL DE FECHA */}
-        <div style={{display:'flex', gap:'10px', marginTop:'15px', alignItems:'center'}}>
-          <span style={{fontWeight:'bold', fontSize:'0.9rem'}}>Rango Global:</span>
-          <input type="date" className="modern-input" onChange={e => setDateRange({...dateRange, start: e.target.value})} />
-          <span>a</span>
-          <input type="date" className="modern-input" onChange={e => setDateRange({...dateRange, end: e.target.value})} />
+        {/* --- REEMPLAZA TU BLOQUE ANTERIOR CON ESTE --- */}
+        <div style={{
+            display: 'flex',
+            flexWrap: 'wrap', /* <--- ESTA ES LA CLAVE: Permite que bajen de línea */
+            gap: '1rem',      /* Espacio entre los inputs */
+            marginTop: '15px',
+            alignItems: 'flex-end' /* Alinea todo abajo */
+        }}>
+          
+          {/* Título de la sección (Ocupa todo el ancho para separar) */}
+          <div style={{ width: '100%', fontWeight: 'bold', fontSize: '0.9rem', color: '#334155' }}>
+            Rango Global:
+          </div>
+
+          {/* INPUT FECHA INICIO (Crece si hay espacio, mínimo 180px) */}
+          <div style={{ flex: '1 1 180px' }}>
+             <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '5px', color: '#64748b' }}>
+               Desde:
+             </label>
+             <input 
+               type="date" 
+               className="modern-input" 
+               onChange={e => setDateRange({...dateRange, start: e.target.value})} 
+               style={{ width: '100%' }} /* Asegura que llene su contenedor */
+             />
+          </div>
+
+          {/* INPUT FECHA FIN */}
+          <div style={{ flex: '1 1 180px' }}>
+             <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '5px', color: '#64748b' }}>
+               Hasta:
+             </label>
+             <input 
+               type="date" 
+               className="modern-input" 
+               onChange={e => setDateRange({...dateRange, end: e.target.value})} 
+               style={{ width: '100%' }}
+             />
+          </div>
+
         </div>
       </div>
 
