@@ -606,3 +606,33 @@ button:disabled {
     font-size: 1.25rem; /* Título un poco más pequeño */
   }
 }
+
+/* --- CORRECCIONES MOBILE --- */
+@media (max-width: 640px) {
+  
+  /* 1. ARREGLO INPUTS DE FECHA Y SELECTS */
+  .modern-input {
+    width: 100% !important; /* Fuerza a no pasarse del 100% */
+    min-width: 0;           /* Permite que se encoja más de lo "natural" */
+    box-sizing: border-box; /* El padding no suma al ancho total */
+    font-size: 0.9rem;      /* Letra un pelín más chica ayuda a que quepa la fecha */
+  }
+
+  /* Específico para inputs de fecha en iOS/Android */
+  input[type="date"] {
+    -webkit-appearance: none; /* Quita estilos nativos feos que ocupan espacio extra */
+    appearance: none;
+    min-width: 95%; /* Asegura que no se salga */
+  }
+
+  /* 2. ARREGLO DE CONTENEDORES */
+  .wide-container {
+    padding: 1rem 0.5rem; /* Menos margen a los lados en el celular */
+    width: 100%;
+  }
+
+  .selector-card, 
+  .modern-form-card {
+    padding: 1rem; /* Reducir padding interno para dar espacio al contenido */
+  }
+}

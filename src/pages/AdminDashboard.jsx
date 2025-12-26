@@ -204,7 +204,7 @@ const AdminDashboard = () => {
           </div>
 
           {/* 3. FILA DE GRÁFICOS (KPI 2 y 3) - OCUPANDO EL ANCHO DISPONIBLE */}
-          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 1fr))', gap:'2rem'}}>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'2rem'}}>
             
             {/* KPI 2: DONA IZQUIERDA */}
             <div className="modern-form-card" style={{ minWidth: '100%' }}>
@@ -223,30 +223,51 @@ const AdminDashboard = () => {
                 </select>
               </div>
 
-              <div style={{height: 300}}>
+              <div style={{height: 400}}>
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie 
                       data={kpi2Data} 
                       cx="50%" 
-                      cy="50%" 
-                      innerRadius={60}      /* EL AGUJERO DE LA DONA */
-                      outerRadius={90}     /* TAMAÑO TOTAL */
+                      cy="40%" 
+                      innerRadius='50%'      /* EL AGUJERO DE LA DONA */
+                      outerRadius='70%'     /* TAMAÑO TOTAL */
                       paddingAngle={1}      /* ESPACIO BLANCO ENTRE REBANADAS */
                       dataKey="value" 
                       cornerRadius={5}      /* BORDES REDONDOS */
                       stroke="none"         /* QUITA EL BORDE BLANCO FEO POR DEFECTO */
                       /* label   <-- AL BORRAR ESTA LÍNEA, DESAPARECEN LOS NÚMEROS */
                     >
-                      {kpi2Data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
+                      {/* LÓGICA DE COLORES INTELIGENTE */}
+                      {kpi2Data.map((entry, index) => {
+                        let colorFinal;
+
+                        // 1. Si el usuario filtró "Por Color", usamos el mapa visual real
+                        if (kpi2Metric === 'id_color') {
+                            colorFinal = getColorHex(entry.name);
+                        } else {
+                            // 2. Si es otra cosa (Forma/Tamaño), usamos la paleta de colores variados
+                            colorFinal = COLORS[index % COLORS.length];
+                        }
+
+                        return <Cell key={`cell-${index}`} fill={colorFinal} />;
+                      })}
                     </Pie>
                     <Tooltip 
                       formatter={(value) => [`${value} registros`, 'Cantidad']}
                       contentStyle={{borderRadius:'8px', border:'none', boxShadow:'0 4px 10px rgba(0,0,0,0.1)'}}
                     />
-                    <Legend verticalAlign="bottom" height={36}/>
+                    <Legend 
+                      verticalAlign="bottom" 
+                      wrapperStyle={{
+                        maxHeight: '100px', // Altura máxima de la caja de leyenda
+                        overflowY: 'auto',  // Activa el scroll vertical si se pasa
+                        bottom: 0,
+                        width: '100%',
+                        paddingTop: '10px',
+                        borderTop: '1px solid #f1f5f9' // Línea sutil para separar
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>              
               </div>
@@ -257,15 +278,15 @@ const AdminDashboard = () => {
               {/* CORRECCIÓN 3: ETIQUETA DONA 2 */}
               <h3>Origen Institucional</h3>
               <div style={{marginBottom:'3.5rem'}}></div>
-              <div style={{height: 300}}>
+              <div style={{height: 400}}>
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie 
                       data={kpi3Data} 
                       cx="50%" 
-                      cy="50%" 
-                      innerRadius={60}      /* DEBE COINCIDIR CON EL DE ARRIBA */
-                      outerRadius={90}     /* DEBE COINCIDIR CON EL DE ARRIBA */
+                      cy="40%" 
+                      innerRadius='50%'      /* EL AGUJERO DE LA DONA */
+                      outerRadius='70%'     /* TAMAÑO TOTAL */
                       paddingAngle={1} 
                       dataKey="value" 
                       cornerRadius={5}
@@ -280,7 +301,17 @@ const AdminDashboard = () => {
                       formatter={(value) => [`${value} colectores`, 'Total']}
                       contentStyle={{borderRadius:'8px', border:'none', boxShadow:'0 4px 10px rgba(0,0,0,0.1)'}}
                     />
-                    <Legend verticalAlign="bottom" height={36}/>
+                    <Legend 
+                      verticalAlign="bottom" 
+                      wrapperStyle={{
+                        maxHeight: '100px', // Altura máxima de la caja de leyenda
+                        overflowY: 'auto',  // Activa el scroll vertical si se pasa
+                        bottom: 0,
+                        width: '100%',
+                        paddingTop: '10px',
+                        borderTop: '1px solid #f1f5f9' // Línea sutil para separar
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -357,7 +388,7 @@ const getColorHex = (nombreColor) => {
     
     const map = {
         'ROJO': '#ef4444', 'AZUL': '#3b82f6', 'VERDE': '#22c55e', 
-        'NEGRO': '#000000', 'BLANCO': '#e5e5e5', 'AMARILLO': '#eab308', 
+        'NEGRO': '#000000', 'BLANCO': '#cbc9c9ff', 'AMARILLO': '#eab308', 
         'ROSA': '#f472b6', 'TRANSPARENTE': '#94a3b8', 
         'MORADO': '#a855f7', 'NARANJA': '#f97316', 'OTROS': '#64748b',
         'CAFÉ': '#78350f', 'GRIS': '#6b7280'

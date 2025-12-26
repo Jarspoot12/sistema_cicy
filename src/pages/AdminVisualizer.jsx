@@ -168,7 +168,7 @@ export default function AdminVisualizer() {
              <button 
                 onClick={limpiarFiltros}
                 className="btn-cancel"
-                style={{display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.9rem'}}
+                style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', fontSize: '0.9rem'}}
              >
                 <RotateCcw size={16}/> Limpiar Filtros
              </button>
