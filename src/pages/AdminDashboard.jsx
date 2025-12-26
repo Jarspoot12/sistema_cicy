@@ -314,10 +314,25 @@ const AdminDashboard = () => {
                     <YAxis dataKey="name" type="category" width={100} />
                     <Tooltip cursor={{fill: 'transparent'}} />
                     <Legend />
-                    <Bar dataKey="cantidad" fill="#8884d8" name="Cantidad Encontrada" barSize={30}>
-                       {kpi4Data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
+                    <Bar dataKey="cantidad" name="Cantidad Encontrada" barSize={30}>
+                      {kpi4Data.map((entry, index) => {
+                        
+                        // LÓGICA:
+                        // 1. Si estamos viendo COLORES, usamos la función getColorHex.
+                        // 2. Si estamos viendo FORMAS o TAMAÑOS, usamos la paleta arcoíris (COLORS).
+                        
+                        let colorFinal;
+                        
+                        if (kpi4Metric === 'id_color') {
+                            colorFinal = getColorHex(entry.name);
+                        } else {
+                            colorFinal = COLORS[index % COLORS.length];
+                        }
+
+                        return (
+                          <Cell key={`cell-${index}`} fill={colorFinal} />
+                        );
+                      })}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
@@ -335,5 +350,22 @@ const StatCard = ({ title, value, color }) => (
     <span style={{fontSize:'2rem', fontWeight:'bold', color:'#1e293b'}}>{value}</span>
   </div>
 );
+// --- HELPER PARA COLORES VISUALES ---
+const getColorHex = (nombreColor) => {
+    // Aseguramos que venga en mayúsculas por si acaso
+    const colorKey = nombreColor ? nombreColor.toUpperCase() : '';
+    
+    const map = {
+        'ROJO': '#ef4444', 'AZUL': '#3b82f6', 'VERDE': '#22c55e', 
+        'NEGRO': '#000000', 'BLANCO': '#e5e5e5', 'AMARILLO': '#eab308', 
+        'ROSA': '#f472b6', 'TRANSPARENTE': '#94a3b8', 
+        'MORADO': '#a855f7', 'NARANJA': '#f97316', 'OTROS': '#64748b',
+        'CAFÉ': '#78350f', 'GRIS': '#6b7280'
+    };
+    // Si no encuentra el color, devuelve un gris default
+    return map[colorKey] || '#cbd5e1';
+};
+
+
 
 export default AdminDashboard;
